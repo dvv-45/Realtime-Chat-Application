@@ -10,7 +10,8 @@ import {ENV} from "./lib/env.js";
 import { app, server } from "./lib/socket.js";
 // const app=express();
 
-app.use(express.json());//req.body
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use(cookieParser());//req.cookies
 
