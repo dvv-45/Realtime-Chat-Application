@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+//import path from "path";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use(cookieParser());//req.cookies
 
-const __dirname = path.resolve();
+//const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
@@ -25,13 +25,13 @@ app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes);
 
 
-if (ENV.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend", "dist")));
+// if (ENV.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
-app.get("*", (_, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
-}
+// app.get("*", (_, res) => {
+//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
+// }
 server.listen(PORT, () => {
   console.log("Server running on port: " + PORT);
   connectDB();
